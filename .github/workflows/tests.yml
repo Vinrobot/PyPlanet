@@ -89,9 +89,6 @@ jobs:
         if: matrix.test-type == 'integration'
         run: tests/_scripts/dedicated_setup.sh
 
-      - name: Generate test settings
-        run: tests/_scripts/config.sh
-
       - name: Start dedicated server
         if: matrix.test-type == 'integration'
         run: tests/_scripts/dedicated_start.sh
@@ -101,4 +98,4 @@ jobs:
 
       - name: Dump dedicated server logs on failure
         if: failure()
-        run: cat dedicated/Logs/* || true
+        run: cat tests/_files/server/Logs/* || true
